@@ -6,6 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Cinematic1.unity
-    guid: 4bdd67617247d33478b689e89663e66f
+    path: Assets/Scenes/PhysicsScene.unity
+    guid: 05105f4fa7fbae248b727daa6e2c6238
   m_configObjects: {}
