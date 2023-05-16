@@ -4,12 +4,26 @@ using UnityEngine;
 
 public class GameManagerController : MonoBehaviour
 {
-    [SerializeField] DoorOption[] doorClosedOptions;
+    [SerializeField] GameObject text;
+    [SerializeField] GameObject instructions;
 
     private void Start()
     {
-        int option = Random.Range(0, doorClosedOptions.Length);
-        foreach (var door in doorClosedOptions[option].doors)
-            door.canBeOpened = false;
+        StartCoroutine(QuitText());
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.F2))
+        {
+            text.SetActive(false);
+            instructions.SetActive(!instructions.activeSelf);
+        }
+    }
+
+    IEnumerator QuitText()
+    {
+        yield return new WaitForSeconds(3.0f);
+        text.SetActive(true);
     }
 }

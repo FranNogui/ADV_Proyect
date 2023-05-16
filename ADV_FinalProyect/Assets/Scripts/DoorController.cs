@@ -1,6 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
+enum TypeDoor
+{
+    YesPlayer,
+    NoPlayer,
+    RedDoor,
+    GreenDoor,
+    BlueDoor,
+    ExitDoor
+}
 
 public class DoorController : MonoBehaviour
 {
@@ -8,7 +19,8 @@ public class DoorController : MonoBehaviour
     [SerializeField] MeshRenderer door;
     [SerializeField] Material transparentMaterial;
     [SerializeField] AudioSource doorSlide;
-    public bool canBeOpened;
+    [SerializeField] TypeDoor type;
+    [SerializeField] string nextLevel;
     int _playerIn;
     int _enemiesIn;
 
@@ -20,6 +32,11 @@ public class DoorController : MonoBehaviour
 
     private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.U) && type == TypeDoor.ExitDoor)
+        {
+            SceneManager.LoadScene(nextLevel);
+        }
+
         if (_playerIn + _enemiesIn > 0)
         {
             if (!animator.GetBool("character_nearby"))
@@ -40,15 +57,30 @@ public class DoorController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Player" && canBeOpened)
-            _playerIn++;
+        if (other.tag == "Player")
+        {
+            if (type == TypeDoor.ExitDoor)
+            {
+                SceneManager.LoadScene(nextLevel);
+            }
+
+            PlayerController pc = other.GetComponent<PlayerController>();
+            if (type == TypeDoor.YesPlayer ||
+                (type == TypeDoor.RedDoor && pc.keyRed) ||
+                (type == TypeDoor.GreenDoor && pc.keyGreen) ||
+                (type == TypeDoor.BlueDoor && pc.keyBlue))
+            {
+                _playerIn++;
+            }
+        }
+            
         else if (other.tag == "Enemy")
             _enemiesIn++;
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.tag == "Player" && canBeOpened)
+        if (other.tag == "Player" && _playerIn > 0)
             _playerIn--;
         else if (other.tag == "Enemy" && animator.GetBool("character_nearby"))
             _enemiesIn--;

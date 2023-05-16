@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 0.472
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.00069788954, g: 0.0006414965, b: 0.0006084499, a: 0.472}
+  m_IndirectSpecularColor: {r: 0.009016733, g: 0.008288135, b: 0.007861173, a: 0.472}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -184,7 +184,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Secret Base Infiltration
+  m_text: Secret Base Escape
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d02a843bb18798b49a0d1233565eef15, type: 2}
   m_sharedMaterial: {fileID: 7225942623906423294, guid: d02a843bb18798b49a0d1233565eef15,
@@ -219,7 +219,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 3
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0

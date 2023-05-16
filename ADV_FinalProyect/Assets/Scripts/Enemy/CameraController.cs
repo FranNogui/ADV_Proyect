@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEditor.Experimental.GraphView.GraphView;
 using UnityEngine.AI;
 
 public class CameraController : MonoBehaviour
@@ -30,8 +29,6 @@ public class CameraController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(transform.rotation.eulerAngles);
-
         if (!_waiting)
             StartCoroutine(Wait());
 

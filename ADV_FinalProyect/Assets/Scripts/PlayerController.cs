@@ -25,6 +25,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] AudioSource noise;
     [SerializeField] AudioSource heartBeat;
     [SerializeField] AudioSource ouch;
+    public bool keyRed;
+    public bool keyGreen;
+    public bool keyBlue;
     float _health;
     float _healthTimer;
     CharacterController _character;
